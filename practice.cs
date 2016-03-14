@@ -91,11 +91,8 @@ public class HelloWorld
       vehicleCustomize = Console.ReadLine();
     }
 
-
-
     createVehicle(typeOfVehicle, vehicleCustomize);
     
-
     Console.WriteLine("\n ==================== THANK YOU FOR USING THIS PROGRAM! ====================");
 
   }
@@ -111,21 +108,21 @@ public class HelloWorld
     else if (typeOfVehicle == "car" && vehicleCostumize == "custom"){
       Console.WriteLine("Creating customized car...");
       Car newCar = new Car();
-      newCar = questionsCustomCar(typeOfVehicle, newCar);
+      newCar = createsCustomCar(typeOfVehicle, newCar);
       ShowCustomVehicle(typeOfVehicle);
       showCarSpecifications(typeOfVehicle, newCar);
     }
     else if (typeOfVehicle == "truck" && vehicleCostumize == "custom"){
       Console.WriteLine("Creating customized truck...");
       Truck newTruck = new Truck();
-      newTruck = questionsCustomTruck(typeOfVehicle, newTruck);
+      newTruck = createsCustomTruck(typeOfVehicle, newTruck);
       ShowCustomVehicle(typeOfVehicle);
       showTruckSpecifications(typeOfVehicle, newTruck);
     }
     else if (typeOfVehicle == "plane" && vehicleCostumize == "custom"){
       Console.WriteLine("Creating customized plane...");
       Plane newPlane = new Plane();
-      newPlane = questionsCustomPlane(typeOfVehicle, newPlane);
+      newPlane = createsCustomPlane(typeOfVehicle, newPlane);
       ShowCustomVehicle(typeOfVehicle);
       showPlaneSpecifications(typeOfVehicle, newPlane);
     }
@@ -156,7 +153,7 @@ public class HelloWorld
     Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nMax Flying Height: {4}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.maxHight);
   }
 
-  static Car questionsCustomCar(string typeOfVehicle, Car newCar){
+  static Car createsCustomCar(string typeOfVehicle, Car newCar){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}:", typeOfVehicle);    
     string color = Console.ReadLine();
     Console.Write("How many tires: ");
@@ -168,7 +165,7 @@ public class HelloWorld
     return newCar = new Car(brand, color, tires, seats);
   }
 
-  static Truck questionsCustomTruck(string typeOfVehicle, Truck newTruck){
+  static Truck createsCustomTruck(string typeOfVehicle, Truck newTruck){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}: ", typeOfVehicle);    
     string color = Console.ReadLine();
     Console.Write("How many tires: ");
@@ -180,7 +177,7 @@ public class HelloWorld
     return newTruck = new Truck(weightCapacity, color,tires, seats);
   }
 
-  static Plane questionsCustomPlane(string typeOfVehicle, Plane newPlane){
+  static Plane createsCustomPlane(string typeOfVehicle, Plane newPlane){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}: ", typeOfVehicle);    
     string color = Console.ReadLine();
     Console.Write("How many tires: ");
