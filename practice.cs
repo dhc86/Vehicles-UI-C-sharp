@@ -76,7 +76,6 @@ public class HelloWorld
 
   static public void Main ()
   {
-
     Console.Write("\n===================   WELCOME TO SUPER VEHICLES @VIP™   ===================\n\nHere you can create three types of vehicles Cars, Trucks and Planes.\nTo start please type what is the vehicle you want to create.\nI want a : ");
     string typeOfVehicle = Console.ReadLine();
     while (typeOfVehicle != "car" && typeOfVehicle != "truck" && typeOfVehicle != "plane"){
@@ -94,7 +93,6 @@ public class HelloWorld
     createVehicle(typeOfVehicle, vehicleCustomize);
     
     Console.WriteLine("\n ==================== THANK YOU FOR USING THIS PROGRAM! ====================");
-
   }
 
 
@@ -153,13 +151,41 @@ public class HelloWorld
     Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nMax Flying Height: {4}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.maxHight);
   }
 
+
+  static int tiresValidation(int tires){
+    while (tires < 2 || tires > 6){
+      Console.WriteLine("Can only have Vehicles from 2 to 6 tires. Please enter a valid number");
+      tires = int.Parse(Console.ReadLine());
+    }
+    return tires;
+  }
+
+  static int seatsValidation(int seats){
+    while (seats < 2 || seats > 6){
+      Console.WriteLine("Can only have Vehicles from 2 to 8 seats. Please enter a valid number");
+      seats = int.Parse(Console.ReadLine());
+    }
+    return seats;
+  }
+
+  static string colorValidation(string color){
+    while (color  == "red" && color == "blue" && color == "black" && color == "green"){
+      Console.WriteLine("Can only have red, blue, black and green colors. Please enter available color: ");
+      color = (Console.ReadLine());
+    }
+    return color;
+  }
+
   static Car createsCustomCar(string typeOfVehicle, Car newCar){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}:", typeOfVehicle);    
     string color = Console.ReadLine();
+    color = colorValidation(color);
     Console.Write("How many tires: ");
     int tires = int.Parse(Console.ReadLine());
+    tiresValidation(tires);
     Console.Write("How many seats: ");
     int seats = int.Parse(Console.ReadLine());
+    seats =  seatsValidation(seats);
     Console.Write("What brand : ");
     string brand = Console.ReadLine();
     return newCar = new Car(brand, color, tires, seats);
@@ -168,10 +194,13 @@ public class HelloWorld
   static Truck createsCustomTruck(string typeOfVehicle, Truck newTruck){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}: ", typeOfVehicle);    
     string color = Console.ReadLine();
+    color = colorValidation(color);
     Console.Write("How many tires: ");
     int tires = int.Parse(Console.ReadLine());
+    tires = tiresValidation(tires);
     Console.Write("How many seats: ");
     int seats = int.Parse(Console.ReadLine());
+    seats = seatsValidation(seats);
     Console.Write("weight Capacity of truck: ");
     int weightCapacity = int.Parse(Console.ReadLine()); 
     return newTruck = new Truck(weightCapacity, color,tires, seats);
@@ -180,12 +209,15 @@ public class HelloWorld
   static Plane createsCustomPlane(string typeOfVehicle, Plane newPlane){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}: ", typeOfVehicle);    
     string color = Console.ReadLine();
+    color = colorValidation(color);
     Console.Write("How many tires: ");
     int tires = int.Parse(Console.ReadLine());
+    tires = tiresValidation(tires);
     Console.Write("How many seats: ");
     int seats = int.Parse(Console.ReadLine());
+    seats = seatsValidation(seats);
     Console.Write ("Maximum flying Hight: ");
-    int maxHight = int.Parse(Console.ReadLine());   
+    double maxHight = double.Parse(Console.ReadLine());   
     return newPlane = new Plane(maxHight ,color, tires,seats);
   }
 
@@ -246,12 +278,12 @@ public class HelloWorld
         string[] plane = {
           @"             ______",
           @"             _\ _~-\___",
-          @"     =  = ==(___VIP____D",
+          @" =   =  = ==(___VIP____D",
           @"                 \_____\___________________,-~~~~~~~`-.._",
           @"                 /     o O o o o o O O o o o o o o O o  |\_",
           @"                 `~-.__        ___..----..                  )",
           @"                       `---~~\___________/------------`````",
-          @"                       =  ===(_________D"
+          @"=         =       =    =  ===(_________D"
         };
         for (int i = 0; i < plane.Length; i++){
           Console.WriteLine(plane[i]);
