@@ -3,6 +3,34 @@ using System.Collections.Generic;
  
 public class HelloWorld
 {
+  class Person {
+    public string name { get; set; }
+
+    public Person(){
+      this.name = "<NOT NAMED YET>";   
+    }
+
+    public Person(string name){
+      this.name = name;
+    }
+
+  }
+
+  class Customer:Person {
+
+    public int money { get; set; }
+
+    public Customer(){
+      this.name = "Diego";
+      this.money = 0;
+    }
+
+    public Customer(string name, int money):base(name){
+      this.name = name;
+      this.money = money;
+    }
+
+  }
 
   class Vehicle {
     public string color { get; set; }
@@ -73,7 +101,6 @@ public class HelloWorld
     }
   }
 
-
   static public void Main ()
   {
     Console.Write("\n===================   WELCOME TO SUPER VEHICLES @VIP™   ===================\n\nHere you can create three types of vehicles Cars, Trucks and Planes.\nTo start please type what is the vehicle you want to create.\nI want a : ");
@@ -90,6 +117,15 @@ public class HelloWorld
       vehicleCustomize = Console.ReadLine();
     }
 
+    Customer newCustomer = new Customer();
+    Console.Write("\nBefore we start creating your Vehicle please give us a bit of your information by answering the following questions:\nPlease enter your name: ");
+    string name = Console.ReadLine();
+
+    Console.Write("\nHow much money are looking to invest in your new vehicle: ");
+    int money = int.Parse(Console.ReadLine());
+
+    newCustomer = new Customer(name, money);
+    Console.WriteLine("Thank you very much {0}, let's proceed with your vehicle order!", newCustomer.name);
     createVehicle(typeOfVehicle, vehicleCustomize);
     
     Console.WriteLine("\n ==================== THANK YOU FOR USING THIS PROGRAM! ====================");
