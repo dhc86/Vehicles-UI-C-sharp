@@ -20,7 +20,7 @@ public class HelloWorld
 
     public int money { get; set; }
 
-    public Customer(){
+    public Customer():base(){
       this.name = "Diego";
       this.money = 0;
     }
@@ -67,6 +67,41 @@ public class HelloWorld
     }
   }  
 
+  class RegularCar:Car{
+
+    public int price { get; set; }
+
+    public RegularCar():base(){
+      this.price = 5000;
+    }
+
+    public RegularCar(string brand, string color, int tires, int seats, int price = 5000):base(brand, color, tires, seats){
+      this.brand = brand;
+      this.color = color;
+      this.tires = tires;
+      this.seats = seats;
+      this.price = 5000;
+    }
+  }
+
+  class CustomCar:Car{
+
+    public int price { get; set; }
+
+    public CustomCar():base(){
+      this.price = 70000;
+    }
+
+    public CustomCar(string brand, string color, int tires, int seats, int price = 5000):base(brand, color, tires, seats){
+      this.brand = brand;
+      this.color = color;
+      this.tires = tires;
+      this.seats = seats;
+      this.price = 70000;
+    }
+
+  }
+
 
   class Plane:Vehicle{
 
@@ -84,6 +119,37 @@ public class HelloWorld
     }
   }  
 
+  class RegularPlane: Plane{
+    public int price { get; set; }
+
+    public RegularPlane():base(){
+      this.price = 50000;
+    }
+
+    public RegularPlane(double maxHight, string color, int tires, int seats, int price):base(maxHight, color, tires, seats){
+      this.maxHight = maxHight;
+      this.color = color;
+      this.tires = tires;
+      this.seats = seats;
+      this.price = 50000;
+    }
+  }
+
+  class CustomPlane:Plane{
+    public int price { get; set; }
+
+    public CustomPlane():base(){
+      this.price = 550000;
+    }
+
+    public CustomPlane(double maxHight, string color, int tires, int seats, int price = 550000):base(maxHight, color, tires, seats){
+      this.maxHight = maxHight;
+      this.color = color;
+      this.tires = tires;
+      this.seats = seats;
+      this.price = 550000;
+    }
+  }
 
   class Truck:Vehicle{
 
@@ -98,6 +164,39 @@ public class HelloWorld
       this.color = color;
       this.tires = tires;
       this.seats = seats;
+    }
+  }
+
+  class RegularTruck:Truck{
+    public int price { get; set; }
+
+    public RegularTruck():base(){
+      this.price = 20000;
+      this.weightCapacity = 100;
+    }
+
+    public RegularTruck(int weightCapacity, string color, int tires, int seats, int price):base(weightCapacity, color, tires, seats){
+      this.weightCapacity = weightCapacity;
+      this.color = color;
+      this.tires = tires;
+      this.seats = seats;
+      this.price = 20000;
+    }
+  }
+
+  class CustomTruck:Truck{
+    public int price { get; set; }
+
+    public CustomTruck():base(){
+      this.price = 60000;
+    }
+
+    public CustomTruck(int weightCapacity, string color, int tires, int seats, int price = 60000):base(weightCapacity, color, tires, seats){
+      this.weightCapacity = weightCapacity;
+      this.color = color;
+      this.tires = tires;
+      this.seats = seats;
+      this.price = 60000;
     }
   }
 
@@ -135,56 +234,68 @@ public class HelloWorld
   static void createVehicle(string typeOfVehicle, string vehicleCostumize){
     if (typeOfVehicle == "car" && vehicleCostumize == "regular"){
       Console.WriteLine("Creating regular car...");
-      Car newCar = new Car();
+      RegularCar newCar = new RegularCar();
       ShowRegularVehicle(typeOfVehicle);
-      showCarSpecifications(typeOfVehicle, newCar);
+      showRegularCarSpecifications(typeOfVehicle, newCar);
     }
     else if (typeOfVehicle == "car" && vehicleCostumize == "custom"){
       Console.WriteLine("Creating customized car...");
-      Car newCar = new Car();
+      CustomCar newCar = new CustomCar();
       newCar = createsCustomCar(typeOfVehicle, newCar);
       ShowCustomVehicle(typeOfVehicle);
-      showCarSpecifications(typeOfVehicle, newCar);
+      showCustomCarSpecifications(typeOfVehicle, newCar);
     }
     else if (typeOfVehicle == "truck" && vehicleCostumize == "custom"){
       Console.WriteLine("Creating customized truck...");
-      Truck newTruck = new Truck();
+      CustomTruck newTruck = new CustomTruck();
       newTruck = createsCustomTruck(typeOfVehicle, newTruck);
       ShowCustomVehicle(typeOfVehicle);
-      showTruckSpecifications(typeOfVehicle, newTruck);
+      showCustomTruckSpecifications(typeOfVehicle, newTruck);
     }
     else if (typeOfVehicle == "plane" && vehicleCostumize == "custom"){
       Console.WriteLine("Creating customized plane...");
-      Plane newPlane = new Plane();
+      CustomPlane newPlane = new CustomPlane();
       newPlane = createsCustomPlane(typeOfVehicle, newPlane);
       ShowCustomVehicle(typeOfVehicle);
-      showPlaneSpecifications(typeOfVehicle, newPlane);
+      showCustomPlaneSpecifications(typeOfVehicle, newPlane);
     }
     else if  (typeOfVehicle == "truck" && vehicleCostumize == "regular"){
       Console.WriteLine("Creating regular truck...");
-      Truck newTruck = new Truck();
+      RegularTruck newTruck = new RegularTruck();
       ShowRegularVehicle(typeOfVehicle);
-      showTruckSpecifications(typeOfVehicle, newTruck);
+      showRegularTruckSpecifications(typeOfVehicle, newTruck);
     }
     else {
       Console.WriteLine("Creating regular plane...");
-      Plane newPlane = new Plane();
+      RegularPlane newPlane = new RegularPlane();
       ShowRegularVehicle(typeOfVehicle);
-      showPlaneSpecifications(typeOfVehicle, newPlane);
+      showRegularPlaneSpecifications(typeOfVehicle, newPlane);
     }
   } 
 
 
-  static void showCarSpecifications(string typeOfVehicle, Car newVehicle){
-    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nBrand: {4}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.brand);    
+  static void showRegularCarSpecifications(string typeOfVehicle, RegularCar newVehicle){
+    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nBrand: {4}\nPrice: {5}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.brand, newVehicle.price);    
   }
   
-  static void showTruckSpecifications(string typeOfVehicle, Truck newVehicle){
-    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nWeight Capacity: {4}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.weightCapacity);    
+  static void showCustomCarSpecifications(string typeOfVehicle, CustomCar newVehicle){
+    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nBrand: {4}\nPrice: {5}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.brand, newVehicle.price);    
   }
 
-  static void showPlaneSpecifications(string typeOfVehicle, Plane newVehicle){
-    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nMax Flying Height: {4}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.maxHight);
+  static void showCustomTruckSpecifications(string typeOfVehicle, CustomTruck newVehicle){
+    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nWeight Capacity: {4}\nPrice: {5}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.weightCapacity, newVehicle.price);    
+  }
+
+  static void showRegularTruckSpecifications(string typeOfVehicle, RegularTruck newVehicle){
+    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nWeight Capacity: {4}\nPrice: {5}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.weightCapacity, newVehicle.price);    
+  }
+
+  static void showCustomPlaneSpecifications(string typeOfVehicle, CustomPlane newVehicle){
+    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nMax Flying Height: {4}\nPrice: {5}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.maxHight, newVehicle.price);
+  }
+
+  static void showRegularPlaneSpecifications(string typeOfVehicle, RegularPlane newVehicle){
+    Console.WriteLine("\nThis are your {0} specifications:\nColor: {1}\nNumber of tires: {2}\nNumber of seats: {3}\nMax Flying Height: {4}\nPrice: {5}", typeOfVehicle, newVehicle.color, newVehicle.tires, newVehicle.seats, newVehicle.maxHight, newVehicle.price);
   }
 
 
@@ -212,7 +323,7 @@ public class HelloWorld
     return color;
   }
 
-  static Car createsCustomCar(string typeOfVehicle, Car newCar){
+  static CustomCar createsCustomCar(string typeOfVehicle, CustomCar newCar){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}:", typeOfVehicle);    
     string color = Console.ReadLine();
     color = colorValidation(color);
@@ -224,10 +335,10 @@ public class HelloWorld
     seats =  seatsValidation(seats);
     Console.Write("What brand : ");
     string brand = Console.ReadLine();
-    return newCar = new Car(brand, color, tires, seats);
+    return newCar = new CustomCar(brand, color, tires, seats);
   }
 
-  static Truck createsCustomTruck(string typeOfVehicle, Truck newTruck){
+  static CustomTruck createsCustomTruck(string typeOfVehicle, CustomTruck newTruck){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}: ", typeOfVehicle);    
     string color = Console.ReadLine();
     color = colorValidation(color);
@@ -239,10 +350,10 @@ public class HelloWorld
     seats = seatsValidation(seats);
     Console.Write("weight Capacity of truck: ");
     int weightCapacity = int.Parse(Console.ReadLine()); 
-    return newTruck = new Truck(weightCapacity, color,tires, seats);
+    return newTruck = new CustomTruck(weightCapacity, color,tires, seats);
   }
 
-  static Plane createsCustomPlane(string typeOfVehicle, Plane newPlane){
+  static CustomPlane createsCustomPlane(string typeOfVehicle, CustomPlane newPlane){
     Console.Write("\n========== Custom {0} ==========\nLets start with your full customized {0}\nPlease enter what color do you want your {0}: ", typeOfVehicle);    
     string color = Console.ReadLine();
     color = colorValidation(color);
@@ -254,7 +365,7 @@ public class HelloWorld
     seats = seatsValidation(seats);
     Console.Write ("Maximum flying Hight: ");
     double maxHight = double.Parse(Console.ReadLine());   
-    return newPlane = new Plane(maxHight ,color, tires,seats);
+    return newPlane = new CustomPlane(maxHight ,color, tires,seats);
   }
 
 
