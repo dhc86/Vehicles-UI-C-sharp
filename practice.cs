@@ -13,7 +13,6 @@ public class HelloWorld
     public Person(string name){
       this.name = name;
     }
-
   }
 
   class Customer:Person {
@@ -29,7 +28,6 @@ public class HelloWorld
       this.name = name;
       this.money = money;
     }
-
   }
 
   class Vehicle {
@@ -99,7 +97,6 @@ public class HelloWorld
       this.seats = seats;
       this.price = 70000;
     }
-
   }
 
 
