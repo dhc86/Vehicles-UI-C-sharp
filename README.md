@@ -11,7 +11,7 @@ This is an Object Oriented Program that allows you to create regular of customiz
 Read the `practice.cs` code first and make sure you understand everything in there.
 
 From terminal complile:
-mcs practice.cs 
+'mcs practice.cs' 
 
 Run program: 
-mono practice.exe
+'mono practice.exe'
